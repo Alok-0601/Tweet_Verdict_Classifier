@@ -26,4 +26,20 @@ The project ships with a Streamlit interface where users can type any text or tw
 --> just run this app.py in any of your VS code and type : "streamlit run app.py" in the terminal 
 --> That will bring you to the streamlit interface where you can directly type and check if the model is working correctly or not.
 
+## Prepare TweetClaw Exports
+
+Use `scripts/predict_tweetclaw_export.py` to convert reviewed TweetClaw JSON,
+JSONL, or CSV exports into a local CSV for batch review. When `stacking_model.pkl`
+and `tfidf_vectorizer.pkl` are available, the script also adds the same hate
+speech prediction used by the Streamlit app.
+
+```bash
+python scripts/predict_tweetclaw_export.py examples/tweetclaw_export.jsonl \
+  --output tweetclaw_predictions.csv
+```
+
+Review exports before conversion and do not commit private account data,
+credentials, or non-public tweets. TweetClaw is available from
+https://github.com/Xquik-dev/tweetclaw.
+
 Built with Python · Scikit-learn · Streamlit · CatBoost · NLTK · Pandas · NumPy
